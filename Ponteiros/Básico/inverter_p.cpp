@@ -13,8 +13,8 @@ void inverter (int *p, int n){
 
     for(int i = 0; i <= (n/2); i++){
 
-        int x = *(p + i);
-        int y = *(p + (n - 1));
+        int x = p[i];
+        int y = p[n - 1];
 
         *(p + i) = y;
         *(p + (n - 1)) = x;
