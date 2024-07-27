@@ -1,6 +1,14 @@
+/*Escreva um programa que avalie expressões aritméticas digitadas usando operadores pré-fixos,
+ ou seja, que aparecem antes dos seus operandos, como em "/ 6000 * 5 / 1410 94",
+ que na notação infixa seria escrita como "6000 / (5 * (1410/94))".
+ Observe que, nessa notação polonesa, os parênteses são dispensáveis,
+ pois nunca há ambiguidade, desde que o número de operandos de cada operador seja respeitado.
+ Outro exemplo de entrada possível: "/ * + 3 5 7 - 20 6",
+  que na notação infixa é "((3 + 5) * 7) / (20 - 6)".
+*/
+
 #include <iostream>
 #include <string>
-#include <sstream>
 
 using namespace std;
 

@@ -1,4 +1,19 @@
+/*Escreva uma implementação de fila ilimitada utilizando vetor (alocado dinamicamente).
+ O vetor inicial deve ter tamanho 1 ou 2. Sempre que o vetor estiver cheio, 
+ utilize a estratégia de redimensionamento eficiente estudada na aula: 
+ substituí-lo por outro com o dobro do tamanho.
 
+Escreva uma variação da implementação da questão anterior que,
+ além de expandir o vetor quando ele estiver cheio, 
+ também "contraia" o vetor (isto é, substitua-o por outro menor) 
+ quando ele estiver significativamente vazio. 
+ Atenção: pense numa estratégia eficiente de contração, que faça com que
+  o número de cópias ao longo das operações da fila (tanto inserções quanto remoções) 
+  seja proporcional ao número de operações realizadas. 
+  A grande questão é: você irá contrair o vetor quando ele estiver quantos % vazio? 
+  E o vetor menor terá que tamanho em relação ao original? 
+  */
+ 
 #include <iostream>
 #include <new>
 

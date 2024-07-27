@@ -1,3 +1,20 @@
+/*Usando a sua implementação de pilha ilimitada dos exercícios da aula 07, 
+implemente um programa para avaliar expressões aritméticas nos moldes do final da aula 05.
+ A expressão digitada pode ser arbitrariamente grande, 
+ a critério do(a) usuário(a) (daí o uso da pilha ilimitada),
+ mas sempre possuirá exatamente um par de parênteses para cada operador nela presente,
+ como em "((0 - 40) * (1 / 100))" (lembrando que as aspas não fazem parte da entrada).
+ Dicas: (a) numa primeira implementação, você pode supor que 
+ os elementos presentes na expressão (parênteses, números e operadores) 
+ estarão todos separados por pelo menos um espaço em branco, 
+ como em "( ( 0 - 40 ) * ( 1 / 100 ) )"; assim sendo, cada comando "cin >> s", 
+ sendo "s" uma string, lerá apenas um elemento (parêntese, número ou operador);
+ (b) as funções stod e to_string convertem facilmente entre double e string, 
+ de forma que você pode implementar e usar uma pilha de strings e converter os seus elementos
+ de e para "double" sempre que necessário.
+*/
+
+
 #include <iostream>
 #include <string>
 #include <sstream>
