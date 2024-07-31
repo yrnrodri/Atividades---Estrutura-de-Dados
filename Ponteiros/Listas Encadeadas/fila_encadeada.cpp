@@ -40,8 +40,7 @@ class Fila{
             return false;
         }
 
-        Noh *aux = new Noh;
-        aux = inicio;
+        Noh *aux = inicio;
         inicio = inicio -> prox;
 
         if(inicio == nullptr){

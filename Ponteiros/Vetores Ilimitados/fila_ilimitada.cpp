@@ -39,10 +39,14 @@ void expandir(Fila_Ilimitada &F){
     int *p2 = new int [lim_novo];
 
     for(int i = 0; i < F .lim_atual; i++){
-        p2[i] = F .p[i + F .primeiro];
+        int posicao = (i + F .primeiro) % F .lim_atual;
+        p2[i] = F .p[posicao];
     }
 
     delete [] F .p;
+
+    F .primeiro = 0;
+    F .ultimo = F .n - 1;
 
     F .lim_atual = lim_novo;
     F .p = p2;
@@ -54,7 +58,8 @@ void reduzir(Fila_Ilimitada &F){
     int *p2 = new int [lim_novo];
 
     for(int i = 0; i < lim_novo; i++){
-        p2[i] = F .p[i + F .primeiro];
+        int posicao = (i + F .primeiro) % F .lim_atual;
+        p2[i] = F .p[posicao];
     }
 
     delete [] F .p;
@@ -77,8 +82,8 @@ bool enfilar(Fila_Ilimitada &F, int x){
         F .ultimo = 0;
     }
 
+    F .ultimo = (F .ultimo + 1) % F .lim_atual;
     F .p[F .ultimo] = x;
-    F .ultimo++;
     F .n++;
 
     return true;
@@ -89,14 +94,33 @@ bool desenfilar(Fila_Ilimitada &F){
 
     if(vazia(F)) return false;
 
-    F .primeiro++;
+    F .primeiro = (F .primeiro + 1) % F .lim_atual;
     F .n--;
 
     if(F .n == F .lim_atual * 0.25){
         reduzir(F);
     }
 
+    return true;
 }
+
+void imprimir(Fila_Ilimitada &F){
+     if (vazia(F))
+        {
+            cout << "Fila vazia" << endl;
+            return;
+        }
+
+        cout << "[ ";
+        for (int i = 0; i < F .n; i++)
+        {
+            int posicao = (F .primeiro + i) % F .lim_atual; // Calcula a posição correta para imprimir
+            cout << F .p[posicao] << " ";
+        }
+        cout << "]" << endl;
+
+        cout << "Tamanho do vetor: " << F .lim_atual << endl;
+    }
 
 int main(){
 
@@ -104,7 +128,7 @@ int main(){
 
     for(;;){
 
-         cout << "Operação(Inserir, Remover, Sair): \n";
+         cout << "Operação(Inserir, Remover, Imprimir, Sair): \n";
 
         char opcao;
 
@@ -123,7 +147,7 @@ int main(){
         }
 
         else if(opcao == 'R'){
-            if(vazia(F)) cout << "Conjunto vazio.\n";
+            if(vazia(F)) cout << "Fila Vazia.\n";
             else{
 
             if(desenfilar(F)) cout << "Elemento removido!\n";
@@ -131,8 +155,12 @@ int main(){
             }
             
         }
-
-        else if(opcao == 'S') break;
+        else if(opcao == 'P'){
+            imprimir(F);
+        }
+        else if(opcao == 'S'){
+            break;
+        } 
         else {
             cout << "Opção inválida!\n";
         }

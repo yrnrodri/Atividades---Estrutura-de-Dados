@@ -41,10 +41,8 @@ class Deque{
     }
 
     void inserir_dir(int elem){
-        Noh *novo = new Noh;
-        novo -> prox = nullptr;
-        novo -> elem = elem;
-        novo -> ant = dir;
+
+        Noh *novo = new Noh {dir, elem, nullptr};
 
         if(dir == nullptr){
             esq = novo;
