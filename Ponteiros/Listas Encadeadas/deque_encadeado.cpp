@@ -38,6 +38,8 @@ class Deque{
         }
 
         esq = novo;
+
+        imprimir();
     }
 
     void inserir_dir(int elem){
@@ -52,6 +54,8 @@ class Deque{
         }
 
         dir = novo;
+
+        imprimir();
     }
 
     void remover_esq(){
@@ -70,6 +74,8 @@ class Deque{
         }
 
         delete aux;
+
+        imprimir();
         
     }
 
@@ -90,6 +96,8 @@ class Deque{
         }
 
         delete aux;
+
+        imprimir();
     }
 
     int consultar_esq(){
@@ -100,9 +108,65 @@ class Deque{
         return dir -> elem;
     }
 
+    void imprimir(){
+        if(not vazio()){
+            Noh *aux = esq;
+            while(aux != nullptr){
+                cout << aux -> elem << " ";
+
+                aux = aux -> prox;
+            }
+
+            cout << "\n";
+        }
+    }
+
     ~Deque(){
         while(!vazio()){
             remover_esq();
         }
     }
 };
+
+int main(){
+    try
+    {
+        int escolha, valor;
+        Deque deque;
+        do
+        {
+            cout << "Digite 1 para enfilar pela esquerda" << endl;
+            cout << "Digite 2 para enfilar pela direita" << endl;
+            cout << "Digite 3 para desenfilar pela esquerda" << endl;
+            cout << "Digite 4 para desenfilar pela direita" << endl;
+            cout << "Digite 5 para sair" << endl;
+
+            cin >> escolha;
+            if (escolha == 1)
+            {
+                cin >> valor;
+                deque.inserir_esq(valor);
+            }
+            else if (escolha == 2)
+            {
+                cin >> valor;
+                deque.inserir_dir(valor);
+            }
+            else if (escolha == 3)
+            {
+                deque.remover_esq();
+            }
+            else if (escolha == 4)
+            {
+                deque.remover_dir();
+            }
+
+        } while (escolha != 5);
+    }
+    catch (bad_alloc &e)
+    {
+        cout << "Alocação de memória mal executada" << endl;
+        cerr << e.what() << '\n';
+    }
+    return 0;
+}
